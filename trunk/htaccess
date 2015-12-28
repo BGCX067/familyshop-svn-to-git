@@ -1,0 +1,18 @@
+RewriteEngine On
+RewriteBase /
+
+RewriteRule ^(.*)goods-([0-9]+).html$ $1goods.php\?iid=$2
+
+RewriteRule ^(.*)list-([0-9]+).html$ $1list.php\?catid=$2
+RewriteRule ^(.*)list-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+).html$ $1list.php\?catid=$2&sortnum=$3&sp=$4&ep=$5
+RewriteRule ^(.*)list-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+).html$ $1list.php\?catid=$2&sortnum=$3&sp=$4&ep=$5&page=$6
+RewriteRule ^(.*)list-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)-(.+)-([0-9]+).html$ $1list.php\?catid=$2&sortnum=$3&sp=$4&ep=$5&sq=$6&page=$7
+
+RewriteRule ^(.*)list-(.+)-([0-9]+).html$ $1list.php\?sq=$2&catid=$3
+
+RewriteRule ^(.*)shop-(.+)-([0-9]+)-([0-9]+)-([0-9]+)-(.+)-([0-9]+).html$ $1shop.php\?nick=$2&sortnum=$3&sp=$4&ep=$5&sq=$6&page=$7
+RewriteRule ^(.*)shop-(.+)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+).html$ $1shop.php\?nick=$2&sortnum=$3&sp=$4&ep=$5&page=$6
+RewriteRule ^(.*)shop-(.+).html$ $1shop.php\?nick=$2
+
+RewriteRule ^(.*)shopsearch-(.+)-([0-9]+).html$ $1shopsearch.php\?nick=$2&page=$3
+RewriteRule ^(.*)shopsearch-(.+).html$ $1shopsearch.php\?nick=$2

@@ -1,0 +1,128 @@
+{include file="header.html" }
+
+<!-- 通栏广告 -->
+<div class="ad950"> </div>
+<div class="list">
+		<!-- 当前位置 -->
+		<div class="list_place">
+			<div class="list_place_ioc"><img src="{$SP_URL_IMG}global/ioc_02.gif" align="absmiddle"/></div>
+			<div class="list_place_nav"><a href="{$config.site.siteurl}">首页</a>>
+			{generate_url type=list static=$config.special.static params=$config.goods.category}> 
+			{generate_url type=shop static=$config.special.static nick=$config.goods.item.nick target="_blank"}</div>
+		</div>
+	<!-- 左部开始 -->
+	<div class="list_left"> 
+		<!-- 热销商品 -->
+		<div class="list_hot">
+			<div class="hot_head"><span>热销推荐</span></div>
+			
+			<!--列表模块-->
+			<div class="hot_goods"> 
+				{foreach $config.goods.cat_items as $item}
+				<div class="hot_goods_list">
+					<div class="hot_goods_list_title">
+					 <a href="{generate_url type=goods static=$config.special.static goods_id=$item.num_iid target="_blank"}" target="_blank" onfocus="this.blur()">{$item.title}</a></div>
+					<div class="hot_goods_list_img" onMouseOver="this.className='hot_goods_list_img_hover'" onMouseOut="this.className='hot_goods_list_img'"> <a href="{generate_url type=goods static=$config.special.static goods_id=$item.num_iid target="_blank"}"  target="_blank" onfocus="this.blur()"> 
+						<script language="javascript">setPic('{$item.pic_url|cat:"_160x160.jpg"|base64_encode}',0,0,'{$item.title}');</script></a> </div>
+					<div class="hot_goods_list_price">
+						<span class="hot_goods_list_tbprice">价格:￥<b>{$item.price}</b> 元</span><br />
+						本月热销:<span class="hot_goods_list_num"><b>{$item.volume}</b></span> 件 </div>
+				</div>
+				{/foreach}
+			</div>
+			
+			<!--左部广告-->
+			<div class="leftad">
+				<ul>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 右部开始 -->
+	<div class="list_right"> 
+	<!-- 商品标题 -->
+		<div class="goods_title">
+			<div><h1 class="goodstitle">{$config.goods.item.title}</h1></div>
+			<div class="title_iocr">	
+			</div>
+		</div>
+		
+		<!-- 商品信息 -->
+		<div class="goods_info">
+			<div class="goods_info_img" onMouseOver="this.className='goods_info_img_hover'" onMouseOut="this.className='goods_info_img'"><a href="javascript:;" onclick="clickurl('{$config.goods.taobaoke.click_url|base64_encode}',0); return false;" onfocus="this.blur()"><script language="javascript">setPic("{$config.goods.item.pic_url|cat:'_310x310.jpg'|base64_encode}",0,0,'{$config.goods.item.title}');</script></a> 
+			</div>
+	
+			<div class="goods_info_div">
+				<ul>
+					<li>商品编号：{$config.goods.item.num_iid}
+					<li class="price">价&nbsp;&nbsp;&nbsp;&nbsp;格：<b>{$config.goods.item.price|string_format:"%.2f"}</b>元</li>
+					<li>卖家信用：<img src="{$SP_URL_IMG}global/level_{$config.goods.taobaoke.seller_credit_score}.gif"></li>
+					<li class="stocknum">本月销售：<b>{$config.goods.taobaoke.volume}</b>件</li>
+					<li class="stocknum">库&nbsp;&nbsp;&nbsp;&nbsp;存 ：<span class="stock_location">{$config.goods.item.location.state} {$config.goods.item.location.city}（现货{$config.goods.item.num}件）</span>下单立即发货</li>
+				</ul>
+				<div class="go_buy"> <a href="javascript:;" onclick="clickurl('{$config.goods.taobaoke.click_url|base64_encode}',0); return false;"><img src="{$SP_URL_IMG}global/buy.gif"></a> <a href="javascript:;" onclick="clickurl('{$config.goods.taobaoke.shop_click_url|base64_encode}',0); return false;"><img src="{$SP_URL_IMG}global/shop.gif"></a> </div>
+
+			{literal}	
+<!-- JiaThis Button BEGIN -->
+<div id="jiathis_style_32x32">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_kaixin001"></a>
+	<a class="jiathis_button_taobao"></a>
+	<a class="jiathis_button_baidu"></a>
+	<a href="http://www.jiathis.com/share?uid=1536498" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">var jiathis_config = {data_track_clickback:true};</script>
+<script type="text/javascript" src="http://v2.jiathis.com/code/jia.js?uid=1536498" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+			{/literal}	
+			</div>
+		</div>
+		
+		<!-- 商品头部 -->
+		<div class="goods_head">
+			<div class="goods_head_ioc"><img src="{$SP_URL_IMG}global/ioc_02.gif" align="absmiddle"/></div>
+			<div class="goods_head_nav">商品详细信息</div>
+		</div>
+		
+		<!-- 商品属性 -->
+		<div class="goods_props">
+			<div class="goods_props_catalogs">
+				<div class="clear"></div>
+				{goods_props items=$config.goods.props}
+				<div class="clear"></div>
+			</div>
+		</div>
+		
+		<!-- 商品详细 -->
+		<div id="goods_desc">{$config.goods.item.desc}</div>
+		
+		<div class="goods_head">
+			<div class="goods_head_ioc"><img src="{$SP_URL_IMG}global/ioc_02.gif" align="absmiddle"/></div>
+			<div class="goods_head_nav">评价详情</div>
+		</div>
+				
+		<div id="goods_rates">
+		<table width="748px" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td width="600"><b>评价</b></td>
+				<td width="148"><b>评价人</b></td>
+			</tr>
+			{foreach $config.goods.rates as $rate}
+			<tr>
+				<td><p>{$rate.content}</p><p>{$rate.created}</p>
+				</td>
+				<td>{$rate.nick}</td>
+			</tr>
+		{/foreach}
+		</table>		
+		</div>
+	</div>
+</div>
+
+
+{include file="footer.html" }

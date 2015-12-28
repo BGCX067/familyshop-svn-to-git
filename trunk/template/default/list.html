@@ -1,0 +1,118 @@
+{include file="header.html" }
+<div class="list"> 
+	<!-- 左部开始 -->
+	<div class="list_left"> 
+		<!-- 热销商品 -->
+		<div class="list_hot">
+			<div class="hot_head"><span>热销推荐</span></div>
+			
+			<!--列表模块-->
+			<div class="hot_goods"> 
+				
+				<!--列表循环-->
+
+				<div class="hot_goods_list">
+					<div class="hot_goods_list_title"> <a onfocus="this.blur()" target="_blank" href="goods-3568108352.html">韩国悠语yoryu 茶树薰衣草毛孔净化洁肤胶 深层<span class="H">洁面</span>/控油/祛痘 正</a> </div>
+					<div onmouseout="this.className='hot_goods_list_img'" onmouseover="this.className='hot_goods_list_img_hover'" class="hot_goods_list_img"> <a onfocus="this.blur()" target="_blank" href="goods-3568108352.html"> 
+						<script language="javascript">setPic('aHR0cDovL2ltZzAzLnRhb2Jhb2Nkbi5jb20vYmFvL3VwbG9hZGVkL2kzL1QxUGVKLlhuTlhYWGFJZjdzLl8xMTMxMzAuanBnXzE2MHgxNjAuanBn',0,0,'韩国悠语yoryu 茶树薰衣草毛孔净化洁肤胶 深层&amp;lt;span class=H&amp;gt;洁面&amp;lt;/span&amp;gt;/控油/祛痘 正');</script><img align="absmiddle" alt="韩国悠语yoryu 茶树薰衣草毛孔净化洁肤胶 深层&lt;span class=H&gt;洁面&lt;/span&gt;/控油/祛痘 正" src="http://img03.taobaocdn.com/bao/uploaded/i3/T1PeJ.XnNXXXaIf7s._113130.jpg_160x160.jpg"></a> </div>
+					<div class="hot_goods_list_price">市场价:￥<span class="hot_goods_list_scprice">93.00 </span> 元<br>
+						<span class="hot_goods_list_tbprice">淘宝价:￥<b>49.00</b> 元</span><br>
+						本月热销:<span class="hot_goods_list_num"><b>84</b></span> 件 </div>
+				</div>
+			</div>
+			
+			<!--左部广告-->
+			<div class="leftad">
+				<ul>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 右部开始 -->
+	<div class="list_right"> 
+		<!-- 当前位置 -->
+		<div class="list_place">
+			<div class="list_place_ioc"><img align="absmiddle" src="{$SP_URL_IMG}global/ioc_02.gif"></div>
+			<div class="list_place_nav">您的位置:<a href="{$config.site.siteurl}">首页</a>&gt; <a href="list-1801.html">{$config.list.curr_cat.name}</a> 搜索到 {$config.list.keyword} 相关商品<span class="goods_list_num">{if $config.list.pager}{$config.list.pager->total}{/if}</span>件 </div>
+		</div>
+		
+		<!-- 下级分类 -->
+		{if $config.list.categores}
+		<div class="list_class">
+			<div class="list_class_catalogs">
+				<div class="clear"></div>
+				<ul>
+				{foreach $config.list.categores as $category}
+					<li><img src="{$SP_URL_IMG}global/ioc_03.gif">{generate_url type="list" static=$config.special.static params=$category}</li>
+				{/foreach}
+				</ul>
+				<div class="clear"></div>
+			</div>
+		</div>
+		{/if}
+		
+		<!-- 商品排序 -->
+		<div class="list_choose">
+			<ul>
+				<li id="this_choose"><a href="list-1801-0-1-10000-veDD5g-1.html">销量从高到低</a></li>
+				<li><a href="list-1801-1-1-10000-veDD5g-1.html">信用从高到低</a></li>
+				<li><a href="list-1801-2-1-10000-veDD5g-1.html">价格从高到低</a></li>
+				<li><a href="list-1801-3-1-10000-veDD5g-1.html">价格从低到高</a></li>
+				<li><a href="list-1801-4-1-10000-veDD5g-1.html">时间从高到低</a></li>
+			</ul>
+		</div>
+		
+		<!-- 高级选项 -->
+		<div class="list_look">
+			<div class="list_look_img"><img src="{$SP_URL_IMG}global/sx.gif"></div>
+			<div class="list_look_tit"><span>宝贝筛选</span> 关键字（必选）：</div>
+			<form action="list.php" method="get" id="formsx" name="formsx">
+				<input type="hidden" value="{$config.list.cid}" name="catid">
+				<input type="text" style="height:15px; width:100px; border:solid 1px #CCCCCC;" value="{$config.list.keyword}" name="q">
+				<span>价格：</span>
+				<input type="text" value="" style="height:15px; width:40px; border:solid 1px #CCCCCC;" name="sp">
+				-
+				<input type="text" value="" style="height:15px; width:40px; border:solid 1px #CCCCCC;" name="ep">
+				<span>元</span>
+			</form>
+			<div class="list_look_submit"> <img onclick="javascript:formsx.submit();" style="cursor:hand;padding-left:5px;" src="{$SP_URL_IMG}global/top_search_submit.gif"> <img onclick="javascript:formsx.reset();" style="cursor:hand;padding-left:5px;" src="{$SP_URL_IMG}global/top_search_reset.gif"> </div>
+		</div>
+		
+		<!-- 商品列表 -->
+		<div class="list_goodslist">
+		{foreach $config.list.goods as $item}
+			<div class="goods_list">
+				<div onmouseout="this.className='goods_list_img'" onmouseover="this.className='goods_list_img_hover'" class="goods_list_img"> <a onfocus="this.blur()" target="_blank" href="goods-{$item.num_iid}.html">
+				<script language="javascript">setPic('{$item.pic_url|cat:"_b.jpg"|base64_encode}',0,0,'{$item.title}');</script></a> </div>
+				<div class="goods_list_title"> <a target="_blank" href="goods-{$item.num_iid}.html">{$item.title}</a> </div>
+				<div class="goods_list_price">
+					<div class="goods_list_pricel">
+						<div class="goods_list_tbprice">
+						<img src="{$SP_URL_IMG}global/list_ioc02.gif">价格:￥<span>{$item.price}</span> 元</div>
+						<div class="goods_list_num">
+						<img src="{$SP_URL_IMG}global/list_ioc03.gif">已销售:<span>{$item.volume}</span> 件</div>
+					</div>
+					<div class="goods_list_pricer">
+						<div class="goods_list_button"><a target="_blank" onclick="clickurl('{$item.click_url|base64_encode}',0); return false;" href="javascript:;"><img align="absmiddle" alt="点击购买此商品" src="{$SP_URL_IMG}global/list_ioc05.gif"></a></div>
+						<div class="goods_list_button"><a target="_blank" onclick="clickurl('{$item.shop_click_url|base64_encode}',0); return false;" href="javascript:;"><img align="absmiddle" alt="点击访问卖家店铺" src="{$SP_URL_IMG}global/list_ioc06.gif"></a></div>
+					</div>
+				</div>
+			</div>
+		{/foreach}
+		</div>
+		
+		<!-- 列表广告 -->
+		<div class="bottomad">
+			<ul>
+			</ul>
+		</div>
+		
+		
+		<!-- 列表分页 -->
+		{if $config.list.pager}{$config.list.pager->renderNav()}{/if}
+	</div>
+</div>
+
+
+{include file="footer.html" }

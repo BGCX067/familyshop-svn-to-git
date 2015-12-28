@@ -1,0 +1,22 @@
+<div class="activity">
+	<div class="activity_head"><img src="{$SP_URL_IMG}global/activity.gif"></div>
+	<div class="cat_ads_slider">
+		<dl>
+		{foreach $config.index_hot_sales as $sale}
+			<dt id=top1s{$sale@index+1} onMouseOver="show_goodspic({$sale@index+1},'top1')">
+				<p>{$sale.title}</p>
+			</dt>
+			<dd id=top1b{$sale@index+1} style="display: none"><a href="{$sale.url}{$config.taoke.pid}" target="_blank"><img src="{$SP_URL_IMG}{$sale.image}" width="335" height="120" title="{$sale.title}" /></a></dd>
+		{/foreach}
+		</dl>
+	</div>
+</div>
+<script type=text/javascript>
+function myRandom(iStart,iLast){        
+var iLength = iLast-iStart+1;    
+var num = Math.floor(Math.random()*iLength+iStart);    
+num = num%5;
+return num+1;
+}    
+window.onload = show_goodspic(myRandom(100,5000),'top1');
+</script>

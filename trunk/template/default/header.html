@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={$charset}">
+<title>
+{if isset($head_title) &&  $head_title!=''}{$head_title} {else} {$config.site.sitetitle}{/if}
+{if isset($config.site.sitetitleb) && $config.site.sitetitleb!=''} - {$config.site.sitetitleb} {/if} 
+</title>
+<link href="{$SP_URL_CSS}all.css" rel="stylesheet" type="text/css" />
+{foreach $head_styles as $style}
+<link href="{$SP_URL_CSS}{$style}" rel="stylesheet" type="text/css" />
+{/foreach}
+<script src="{$SP_URL_JS}base64.js"></script>
+<script src="{$SP_URL_JS}function.js"></script>
+<link rel="Shortcut Icon" href="favicon.ico">
+<link rel="Bookmark" href="favicon.ico">
+</head>
+<body>
+<!-- 页面顶部 -->
+<div class="top">
+	<div class="topc">
+		<div class="topl"> <a onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('{$config.site.siteurl}');" href="#">设为首页</a><img src="{$SP_URL_IMG}global/top_ioc_index.gif" align="absmiddle" /> <a href="javascript:;" onclick="javascript:addfavor('{$config.site.siteurl}','{$config.site.sitetitleb}');">收藏本站</a><img src="{$SP_URL_IMG}global/top_ioc_favorites.gif" align="absmiddle" /> </div>
+		<div class="topr"> <a href="/site_map.php" target="_blank">分类</a>- <a href="http://pindao.huoban.taobao.com/tms/channel/channelmall.htm?pid={$config.taoke.pid}" target="_blank">商城</a>- <a href="http://pindao.huoban.taobao.com/tms/channel/onsale.htm?pid={$config.taoke.pid}" target="_blank">特卖</a>- <a href="http://pindao.huoban.taobao.com/tms/channel/taobrandchannel.htm?pid={$config.taoke.pid}" target="_blank">品牌</a>- <a href="http://pindao.huoban.taobao.com/tms/channel/lady.htm?pid={$config.taoke.pid}" target="_blank">女人</a>- <a href="http://pindao.huoban.taobao.com/tms/channel/man.htm?pid={$config.taoke.pid}" target="_blank">男人</a>- <a href="http://pindao.huoban.taobao.com/tms/channel/beauty.htm?pid={$config.taoke.pid}" target="_blank">美容</a>- <a href="http://pindao.huoban.taobao.com/tms/channel/jewelry.htm?pid={$config.taoke.pid}" target="_blank">鞋包</a>- <a href="http://pindao.huoban.taobao.com/tms/channel/baby.htm?pid={$config.taoke.pid}" target="_blank">居家</a>- <a href="http://pindao.huoban.taobao.com/tms/channel/mallhouse.htm?pid={$config.taoke.pid}" target="_blank">家装</a>- <a href="http://pindao.huoban.taobao.com/tms/channel/food1.htm?pid={$config.taoke.pid}" target="_blank">食品</a>- <a href="http://pindao.huoban.taobao.com/tms/channel/digital.htm?pid={$config.taoke.pid}" target="_blank">数码</a>- <a href="http://pindao.huoban.taobao.com/tms/channel/electric.htm?pid={$config.taoke.pid}" target="_blank">电器</a>- <a href="http://pindao.huoban.taobao.com/tms/channel/taiwan.htm?pid={$config.taoke.pid}" target="_blank">台湾馆</a> </div>
+	</div>
+</div>
+
+<!-- LOGO区域 -->
+<div class="toplogo"> 
+	<!-- LOGO站标 -->
+	<div class="logo">
+		<div class="logof"><a href="{$config.site.siteurl}"><img src="{$SP_URL_IMG}{$config.site.logourl}" alt="{$config.site.sitetitle}"/></a></div>
+	</div>
+	<!-- 站内搜索 -->
+	<div class="search">
+		<div class="search_form">
+			<div>
+				<div class="search_form_l"><b>搜索宝贝：</b></div>
+				<div class="search_form_r">
+					<form action="list.php" method="get" name="searchform" id="searchform">
+						<input type="text" class="searchinput" name="q" id="q" value="">
+						<span>
+						<select name="catid">
+							<option value="0" { $config.special.searchdefault == "0"?" selected":""}>所有分类</option>
+							{html_select_items items=$config.taobao_categores curr_catid=0}
+						</select>
+						</span>
+						<div>
+						<input type="submit" value="" class="searchgoods">
+						<input type="submit" name="searchshop" value="1" class="searchshop">
+						<input type="submit" name="searchnick" value="2" class="searchnick">
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="search_hot">
+				<ul>
+					<li><b>热门搜索：</b></li>
+					{hot_keywords keywords=$config.keywords shuffle=$config.special.hotkeyshuffle number=$config.special.hotkeynum static_url=$config.special.static}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 导航菜单 -->
+<div class="menu">
+	<div class="menul"></div>
+	<div class="menuc">
+		<ul >
+			<li><a href="{$config.site.siteurl}" style="padding-left:5px;">首页</a></li>
+			{navgation items=$config.navgation static_url=$config.special.static}
+		</ul>
+	</div>
+	<div class="menur"></div>
+</div>
+
+<!-- 栏目推荐 -->
+<div class="top_nav">
+	<div class="nav_box">
+		{foreach $config.hot_navgation as $navgation}
+			<div class="nav_box1">
+				<dl>
+					<dt>
+					<a href="{if $config.special.static ==0}list.php?catid={$navgation.name.1}{else} list-{$navgation.name.1}.html{/if}" title="{$navgation.name.0}"></a></dt>
+					{foreach $navgation.items as $item}
+					<dd>{hot_navgation items=$item static=$config.special.static catid=$navgation.name.1}</dd>
+					{/foreach}
+				</dl>
+			</div>
+		{/foreach}
+	</div>
+</div>
+
+<!-- 通栏广告 -->
+<div class="ad950">
+	<?php ad(top_across); ?>
+</div>

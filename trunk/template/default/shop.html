@@ -1,0 +1,44 @@
+{include file="header.html" } 
+
+<!-- 通栏广告 -->
+<div class="ad950"> </div>
+<div class="list"> 
+	<!-- 当前位置 -->
+	<div id="shop_title">
+		<div class="shop_logo"><a href="{$config.shop.info.click_url}"><img  src="http://logo.taobaocdn.com/shop-logo{$config.shop.info.pic_path}" /></a></div>
+		<div class="title"><a href="{$config.shop.info.click_url}" target='_blank'>{$config.shop.info.title}</a></div>
+		<div class="desc"></div>
+	</div>
+	<div class="list"> 
+		{foreach $config.shop.items as $cagegory}
+		<div class="list_goodslist">
+			<div class="goods_head">
+				<div class="goods_head_title">{$cagegory.name}</div>
+			</div>
+		
+		{foreach $cagegory.items as $item}
+			<div class="goods_list">
+				<div onmouseout="this.className='goods_list_img'" onmouseover="this.className='goods_list_img_hover'" class="goods_list_img"> <a onfocus="this.blur()" target="_blank" href="{generate_url type=goods static=$config.special.static goods_id=$item.num_iid target="_blank"}"> 
+					<script language="javascript">setPic('{$item.pic_url|cat:"_b.jpg"|base64_encode}',0,0,'{$item.title}');</script></a> </div>
+				<div class="goods_list_title">
+					<a target="_blank" href="{generate_url type=goods static=$config.special.static goods_id=$item.num_iid target="_blank"}">{$item.title}</a>
+				</div>
+				<div class="goods_list_price">
+					<div class="goods_list_pricel">
+						<div class="goods_list_tbprice">
+						<a href="{generate_url type=goods static=$config.special.static goods_id=$item.num_iid target="_blank"}">
+						<img src="{$SP_URL_IMG}global/list_ioc02.gif">价格:￥<span>{$item.price}</span> 元</a></div>
+					</div>
+				</div>
+			</div>
+			{/foreach} </div>
+		{/foreach} 
+		<div class="clear"></div>
+		<!-- 列表广告 -->
+		<div class="bottomad">
+			<ul>
+			</ul>
+		</div>
+	</div>
+</div>
+{include file="footer.html" }

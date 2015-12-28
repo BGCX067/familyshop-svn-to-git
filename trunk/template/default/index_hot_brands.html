@@ -1,0 +1,10 @@
+<div class="brand_box">
+	<div class="brand_box_header"><img src="{$SP_URL_IMG}global/brand.gif" /></div>
+	<div class="brand_box_img">
+		<ul>
+		{foreach $config.index_hot_brands as $brand}
+			<li><a href="{$brand.url}{$config.taoke.pid}" target="_blank" title="{$brand.name}"><img src="{$SP_URL_IMG}{$brand.image}" width="95" height="66" /></a></li>
+		{/foreach}
+		</ul>
+	</div>
+</div>

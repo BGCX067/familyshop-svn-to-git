@@ -1,0 +1,55 @@
+<div class="index_goods">
+{foreach $config.index_categores as $category}
+	<div class="goods_left">
+    	<!--头部-->
+    	<div class="goods_head">
+        	<div class="goods_head_title">{$category.catname}</div>
+            <div class="goods_head_hot">
+			{foreach $category.keywords as $keyword}			
+			{generate_url type='search_keyword' static=$config.special.static keyword=$keyword catid=$category.catid  target='_blank'}
+			{/foreach}
+			<a href="site_map.php">>>></a></div>
+        </div>
+        
+
+        <div class="goods_div">
+        <!--商品列表循环-->
+		{foreach $category.taobaoke_items.taobaoke_item as $goods}
+        	<div class="goods_list">
+            	<div class="goods_list_title">
+				<a href="{generate_url type='goods' static=$config.special.static goods_id=$goods.num_iid  target='_blank'}" target="_blank" onFocus="this.blur()" title="{$goods['title']|htmlspecialchars}">{$goods['title']}</a></div>
+            	<div class="goods_list_img" onMouseOver="this.className='goods_list_img_hover'" onMouseOut="this.className='goods_list_img'">
+                <a href="{generate_url type='goods' static=$config.special.static goods_id=$goods.num_iid  target='_blank'}" target="_blank" onFocus="this.blur()"><script language="javascript">setPic("{$goods.pic_url|cat:'_160x160.jpg'|base64_encode}",0,0,'');</script></a>
+                </div>
+                <div class="goods_list_price">市场价:￥<span class="goods_list_scprice">{$goods.price}
+				</span> 元<br />
+                <span class="goods_list_tbprice">淘宝价:￥<b>{$goods.price}</b> 元</span>
+                </div>
+            </div>
+        {/foreach}
+        </div>
+        
+    </div>
+    
+     <!--本块右部-->
+    <div class="goods_right">
+    <div class="goods_head">
+       <div class="goods_head_title">热门店铺</div>
+    </div>
+       <div class="index_shop">
+        	<ul>
+			{foreach $category.shops as $shop}
+			<li><a href="{$shop.url}{$config.taoke.pid}" target="_blank">{$shop.name}</a><img src="{$SP_URL_IMG}global/level_{$shop.level}.gif" align="absmiddle"/></li>
+			{/foreach}
+            </ul>
+        </div>
+        <div class="index_brand">
+        	<ul>
+            {foreach $category.brands as $brand}
+            <li><a href="{$brand.url}{$config.taoke.pid}" target="_blank"><img src="{$SP_URL_IMG}{$brand.image}" align="absmiddle"/></a></li>
+			{/foreach}
+            </ul>
+		</div>
+    </div>
+{/foreach}
+</div>

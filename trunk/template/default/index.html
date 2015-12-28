@@ -1,0 +1,73 @@
+{include file="header.html" }
+
+<div class="index">
+
+<div class="index_header">
+
+<!--左部开始-->
+<div class="index_header_left">
+
+<!--加载幻灯片-->
+<script type="text/javascript">
+var swf_width=600;
+var swf_height=300;
+</script>
+<script type="text/javascript" src="{$SP_URL_JS}demo.js"></script>
+
+<!--热门分类-->
+<div class="hot_class_area">
+	<div class="hot_class">
+	<div class="hot_class_head">
+    	<div class="hot_class_headl"><img src="{$SP_URL_IMG}global/hot_class.gif"></div>
+        <div class="hot_class_headr"><a href="site_map.php" target="_blank">查看所有分类 →</a></div>
+    </div>
+		{foreach $config.hot_categores as $category}
+			{if $category@iteration  is not div by 2}
+			<div class="class_area">
+				<div class="class_left l" onMouseOver="this.className='class_left l class_hover'" onMouseOut="this.className='class_left l'">
+					<div class="classname l">{$category.category['name']}</div>
+					<div class="content_area l"><p>
+						{foreach $category.items as $item}
+						{generate_url type='list' static=$config.special.static params=$item target='_blank'}
+						{/foreach}
+					</p></div>
+				</div>	
+			{else}
+				<div class="class_left l" onMouseOver="this.className='class_left l class_hover'" onMouseOut="this.className='class_left l'">
+					<div class="classname l">{$category.category['name']}</div>
+					<div class="content_area l"><p>
+						{foreach $category.items as $item}
+						{generate_url type='list' static=$config.special.static params=$item target='_blank'}
+						{/foreach}
+				</p></div>
+				</div>
+			</div>
+			{if !$category@last}<div class="class_line"></div>{/if}
+			{/if}
+		{/foreach}
+    </div>
+</div>
+
+</div>
+<!--左部结束-->
+
+<!--右部开始-->
+<div class="index_header_right">
+{include file="index_hot_focus.html"}
+{include file="index_hot_brands.html"}
+<script type="text/javascript" src="{$SP_URL_JS}goodslist.js"></script>
+{include file="index_hot_sales.html"}
+ </div>
+
+<!--右部结束-->
+</div>
+
+<!--通栏广告-->
+<div class="ad950">
+<?php ad(index_across); ?>
+</div>
+
+{include file="index_goods.html"}
+
+</div>
+{include file="footer.html" }

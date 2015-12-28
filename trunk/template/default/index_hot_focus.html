@@ -1,0 +1,55 @@
+<!--单品推荐-->
+
+<div class="today_goods">
+	<div class="today_goods_menu">
+		<ul>
+			<li class="hover" id="today_tree1">今日特价</li>
+			<li id="today_tree2">今日推荐</li>
+			<li id="today_tree3">人气热销</li>
+			<li id="today_tree4">最佳关注</li>
+		</ul>
+		<div class="today_goods_clear"></div>
+	</div>
+	<div class="today_tree">
+	{foreach $config.index_hot_focus as $focus}
+		<div id="today_tree{$focus@index+1}_body" {if !$focus@first}style="display:none;"{/if}>
+			{foreach $focus as $item}
+			<div class="tree_body">
+				<ul>
+				<li class="tree_body_class"><a href="list-30.html" target="_blank">{$item.catname}</a></li>
+					<li class="tree_body_name"><a href="goods-9975574212.html" target="_blank" title="{$item.goods_name}">{$item.goods_name}</a></li>
+					<li class="tree_body_price">{$item.sale_title}:<b>{$item.sale_price}</b></li>
+				</ul>
+			</div>
+			{/foreach}
+		</div>
+	{/foreach}
+	</div>
+</div>
+<script type="text/javascript">
+var cycleList = ['today_tree1','today_tree2','today_tree3','today_tree4'];
+var tabFront = 'hover';
+var tabBack = '';
+
+function cycleShow(obj){
+var curObj;
+var curBody;
+for (i=0; i < cycleList.length; i++){
+	curObj = document.getElementById(cycleList[i]);
+	curBody = document.getElementById(cycleList[i] + '_body');
+	if (obj.id == curObj.id){
+		curObj.className = tabFront;
+		curBody.style.display = "";
+	}else{
+		curObj.className = tabBack;
+		curBody.style.display = "none";
+		}
+    }
+}
+
+for (i=0; i< cycleList.length; i++){
+	document.getElementById(cycleList[i]).onmouseover = function(){
+		cycleShow(this);
+	};
+}
+</script>
